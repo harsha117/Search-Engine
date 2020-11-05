@@ -1,0 +1,56 @@
+{%extends 'base.html'%}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search</title>
+</head>
+<body>
+
+
+<header class="header">
+
+
+    {% if user.is_authenticated %}
+    <ul><a href="logout">Logout</a></ul>
+
+    {% else %}
+    <ul><a href="login">Login</a></ul>
+    <ul><a href="register">Register</a></ul>
+    {% endif %}
+</header>
+
+{% if request.user.is_authenticated %}
+<center><h2> Please enter your search string </h2></center>
+<div id="cover">
+
+    <form action="search" method="get" >
+
+{#      {% csrf_token %}#}
+
+    <div class="tb">
+        <center><div class="td"><input type="text" name="query" id="query" placeholder="Search" required></div></center>
+        <br>
+        <br>
+      <div class="td" id="s-cover">
+         <center><input type = "Submit"></center>
+          <div id="s-circle"></div>
+
+          {% for message in messages %}
+              <center><h3> {{message}} </h3></center>
+            {% endfor %}
+
+          <span></span>
+      </div>
+    </div>
+  </form>
+{% else %}
+    <center><h3> Please <a href = "login">login</a> to Search. </h3></center>
+</div>
+{% endif %}
+</body>
+</html>
+{% endblock %}

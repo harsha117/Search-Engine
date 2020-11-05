@@ -1,0 +1,44 @@
+{% extends 'base.html'%}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Result Page</title>
+</head>
+<body>
+
+{#    {% csrf_token %}#}
+<h1> The results are: </h1>
+        {% for srch in srchs %}
+        <div class="search item">
+            <div class="search_image">
+                <center><img src="{{srch.img.url}}" alt=""></center>
+                <br>
+                <br>
+                <br>
+            </div></div>
+
+            <div class="search_content">
+               <center> <div class="search_title"><a>{{srch.search_str}}</a><br>
+            <br>
+            </div></center></div>
+
+            <div class="search_description">
+               <center> <div class="search_description"><a>{{srch.des}}</a>
+            </div></center>
+                <br>
+                <br>
+    <form action=" ">
+              <center><a href = "/">Search again</a></center>
+          </form>
+            </div>
+
+        {% endfor %}
+
+
+</body>
+</html>
+
+{% endblock %}
